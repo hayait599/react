@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchPosts } from './../actions/index';
 
 class HomePage extends Component {
+
   componentDidMount() {
     this.props.fetchPosts();
   }
+
   renderPosts() {
     return _.map(this.props.data, (post, key) => {
       return (
@@ -27,7 +30,9 @@ class HomePage extends Component {
     return (
       <div>
         <div className="header">
-          <button className="add-post-btn" >add post</button>
+          <Link to="/post/new">
+            <button className="add-post-btn" >add post</button>
+          </Link>
         </div>
         {this.renderPosts()}
       </div>
